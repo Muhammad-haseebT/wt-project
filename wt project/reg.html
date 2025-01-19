@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      .mode input {
+        position: absolute;
+        color: #fff;
+        height: 40px;
+        width: 80px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 5%;
+        right: 5%;
+        background: transparent;
+        border: 1px solid #ffffff64;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.322);
+        backdrop-filter: blur(5px);
+        border-radius: 10px;
+      }
+      .mode input:hover {
+        background-color: rgba(0, 255, 255, 0.125);
+      }
+
+      header {
+        text-align: center;
+        color: #fff;
+        font-size: 25px;
+      }
+
+      form {
+        height: 100vh;
+        background-image: url(i\ \(1\).jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        background: transparent;
+        border: 1px solid #ffffff64;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.322);
+        backdrop-filter: blur(5px);
+        border-radius: 10px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+      }
+      .input {
+        position: relative;
+        margin: 20px 0;
+      }
+      .input input {
+        width: 320px;
+        height: 40px;
+        font-size: 16px;
+        color: #fff;
+        padding: 0 10px;
+        background: transparent;
+        border: none;
+        border-bottom: 1.2px solid #fff;
+        outline: none;
+      }
+      .input label {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: #fff;
+        padding: 0 5px;
+        pointer-events: none;
+        transition: 0.5s;
+      }
+      footer {
+        text-align: center;
+        margin-top: 10px;
+      }
+      footer input {
+        width: 50%;
+        padding: 10px;
+        font-size: 20px;
+        background: transparent;
+        color: #fff;
+      }
+      .input input:focus ~ label,
+      .input input:valid ~ label {
+        top: -10px;
+        left: 0%;
+        font-size: 12px;
+      }
+      i {
+        text-align: center;
+      }
+      #txt {
+        display: none;
+      }
+        .ac {
+            margin-top: 10px;
+            color: #fff;
+            cursor: pointer;
+            text-decoration-line: underline;
+        }
+    </style>
+  </head>
+
+  <body>
+    <form action=""onsubmit="return validate();">
+      <div class="mode">
+        <input type="button" value="Switch" />
+      </div>
+      <div class="container">
+        <header>
+          <h1>Register</h1>
+        </header>
+        <br />
+        <div class="input">
+          <input type="text" name="FirstName" id="n1" required />
+          <label for="First Name">First Name</label>
+        </div>
+
+        <div class="input">
+          <input type="text" name="LastName" id="n2" required />
+          <label for="First Name">Last Name</label>
+        </div>
+
+        <div class="input">
+          <input type="email" name="email" id="em"required />
+          <label for="First Name">Email</label>
+        </div>
+        <div class="input">
+          <input type="password" name="password" id="pa" required />
+          <label for="password">password</label>
+        </div>
+        <footer>
+          <input id="sb" type="submit" value="Register" />
+         
+          <h3 class="ac" onclick="reg()">already have an account </h3>
+        </footer>
+      </div>
+    </form>
+  </body>
+  <script>
+   function validate() {
+            // Get user input
+            const email = document.getElementById("em").value;
+            const password = document.getElementById("pa").value;
+
+            // Check if email already exists in localStorage
+            if (localStorage.getItem(email) !== null) {
+                alert("Email already registered!");
+                return false; // Prevent form submission
+            }
+
+            // Save email and password to localStorage
+            localStorage.setItem(email, password);
+            alert("Registration successful!");
+
+            // Redirect to login page
+            window.location.href = "index.html";
+            return false; // Prevent default form submission
+        }
+        function reg(){
+            window.location.href="index.html";
+        }
+  </script>
+</html>
